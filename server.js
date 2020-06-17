@@ -2,6 +2,8 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+const uuid = require("uuid");
+
 
 //Sets up the Express App
 const app = express();
@@ -29,40 +31,54 @@ app.get("/notes", function (req, res) {
 app.get("/api/notes", function (req, res) {
     fs.readFile(path.join(__dirname, "./db/db.json"), function (err, data) {
         if (err) throw err;
-        res.json(JSON.parse(data));
+        const notes = JSON.parse(data);
+        res.json(notes);
     })
 
 });
 
 //new notes
 
-app.get("/api/notes", function (req, res) {
+app.post("/api/notes", function (req, res) {
     fs.readFile(path.join(__dirname, "./db/db.json"), function (err, data) {
         if (err) throw err;
         const notes = JSON.parse(data);
         const newNotes = req.body;
-        const newNotesId = notes.length + 1;
-        const notesData = {
-            id: newNotesId,
-            title: newNotes.title,
-            text: newNotes.text
-        }
-        notes.push(notesData);
-        console.log(notesData);
+        newNotes.id = uuid.v4();
+        notes.push(newNotes);
+
 
         const createNotes = JSON.stringify(notes);
         fs.writeFile(path.join(__dirname, "./db/db.json"), createNotes, function (err, data) {
             if (err) throw err;
-        })
-
+        });
+        res.json(newNotes);
+        console.log("Adding notes!");
 
     })
 
-})
+});
 
 
+//Delete notes
 
+app.delete("/api/notes/:id", function (req, res) {
+    const noteId = req.params.id;
+    fs.readFile(path.join(__dirname, "./db/db.json"), function (err, data) {
+        if (err) throw err;
+        const notes = JSON.parse(data);
+        const notesArray = notes.filter(item => {
+            return item.id !== noteId
+        });
+        fs.writeFile('./db/db.json', JSON.stringify(notesArray), function (err, data) {
+            console.log("Delete notes!")
+            if (err) throw err;
+            res.json(notesArray)
 
+        });
+    });
+
+});
 
 
 
