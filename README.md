@@ -1,7 +1,4 @@
-# -ExpressHW-NoteTaker
-
-
-  ![GitHub Activity](https://img.shields.io/github/commit-activity/m/seulkilee0428/README_Generator?style=plastic);
+ ![GitHub Activity](https://img.shields.io/github/commit-activity/m/seulkilee0428/README_Generator?style=plastic);
 
 # ExpressHW Note Taker
 * Create an application that can be used to write, save, and delete notes. This application will use an express backend and save and retrieve note data from a JSON file.
@@ -18,9 +15,9 @@
 
 ## __Usage__ :                   
 * Application should allow users to create and save notes.
-
-## __Contributor__ :              
 * Application should allow users to delete previously saved notes.
+
+Live demo -  https://stormy-island-72776.herokuapp.com/
 
 
 ## __Questions__ :
