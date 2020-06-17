@@ -18,17 +18,12 @@
 
 ## __Usage__ :                   
 * Application should allow users to create and save notes.
-## __License__ :                    
-* 
+
 ## __Contributor__ :              
 * Application should allow users to delete previously saved notes.
-## __Test__ :                      
-* 
+
 
 ## __Questions__ :
-* Profile Pic
- - ![Image](https://avatars0.githubusercontent.com/u/47539186?s=400&u=da99dfaefc819f5ec9be6126240f076e14c18aff&v=4)
-
 * Username
  - seulkilee0428
 
